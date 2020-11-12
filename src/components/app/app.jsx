@@ -21,6 +21,11 @@ export default class App extends Component{
       {username:'Ap',content:'React太香了'}
     ]
   }
+  deleteComment=(index)=>{
+    const {comments} = this.state;
+    comments.splice(index,1)
+    this.setState({comments})
+  }
   addComment=(comment)=>{
     const {comments} = this.state
     comments.unshift(comment)
@@ -41,7 +46,7 @@ export default class App extends Component{
         </header>
         <div className="container">
           <CommentAdd addComment={this.addComment}/>
-          <CommentList comments={comments}/>
+          <CommentList comments={comments} deleteComment={this.deleteComment}/>
         </div>
       </div>
     )
